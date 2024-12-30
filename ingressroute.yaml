@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonar-ingressroute
+  namespace: sonarqube
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`sonarqube.localhost`)
+      kind: Rule
+      services:
+        - name: sonar-sonarqube
+          port: 80
+      middlewares:
+        - name: body-size-limit
+          namespace: sonarqube

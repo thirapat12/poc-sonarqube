@@ -1,0 +1,11 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: body-size-limit
+  namespace: sonarqube
+spec:
+  buffering:
+    maxRequestBodyBytes: 104857600  # 100MB; adjust as needed
+    maxResponseBodyBytes: 104857600  # 100MB; adjust as needed
+    memRequestBodyBytes: 104857600
+    memResponseBodyBytes: 104857600
