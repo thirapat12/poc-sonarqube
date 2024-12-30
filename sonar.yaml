@@ -608,7 +608,7 @@ ingress:
   ## This is supported in Kubernetes 1.18+ and required if you have more than one IngressClass marked as the default for your cluster.
   ## ref: https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/
   ##
-  ingressClassName: "nginx"
+  ingressClassName: ""
   ## @param ingress.hostname Default host for the ingress record
   ##
   hostname: sonarqube.localhost
@@ -625,8 +625,10 @@ ingress:
   ##   cert-manager.io/cluster-issuer: cluster-issuer-name
   ##
   annotations: 
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.middlewares: "body-size-limit@kubernetescrd"
   ## @param ingress.labels Additional labels for the Ingress resource.
   ## e.g:
   ## labels:
@@ -645,7 +647,7 @@ ingress:
   ##
   selfSigned: false
   ## @param ingress.extraHosts An array with additional hostname(s) to be covered with the ingress record
-  ## e.g:
+  ## e.g:nginx
   ## extraHosts:
   ##   - name: sonarqube.local
   ##     path: /
