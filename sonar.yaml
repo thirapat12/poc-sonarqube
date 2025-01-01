@@ -115,7 +115,7 @@ sonarqubeUsername: thirapat12
 ## @param sonarqubePassword SonarQube&trade; user password
 ## Defaults to a random 10-character alphanumeric string if not set
 ##
-sonarqubePassword: "LoveNaN#1312"
+sonarqubePassword: "TG92ZU5hTiMxMzEy"
 ## @param provisioningFolder Directory to use for provisioning content to Sonarqube
 ##
 provisioningFolder: "/bitnami/sonarqube-provisioning"
